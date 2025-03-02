@@ -21,7 +21,9 @@ class PageController extends Controller
 
     public function welcome()
     {
-        return view('welcome');
+        return view('welcome', [
+            'title' => 'HackBlog',
+        ]);
     }
 
     public function articles()
@@ -43,9 +45,18 @@ class PageController extends Controller
         ]);
     }
 
-    public function aboutUs()
+    
+     public function aboutUs()
     {
-        return view('pages.about-us');
+        $team = [
+            ['id' => 1, 'name' => 'Alessandro'],
+            ['id' => 2, 'name' => 'Giuseppe'],
+            ['id' => 3, 'name' => 'Catalina'],
+        ];
+
+        return view('pages.about-us', [
+            'team' => $team,
+        ]);
     }
 
     

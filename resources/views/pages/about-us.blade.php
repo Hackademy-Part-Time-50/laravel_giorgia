@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HackBlog</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
+<x-layouts.app>
     <div class="container mt-5">
-        <nav>
-            <a href="{{ route('welcome') }}">Home</a>
-            <a href="{{ route('articles') }}">Articoli</a>
-            <a href="{{ route('aboutUs') }}">Chi Siamo</a>
-            <a href="{{ route('contacts') }}">Contatti</a>
-        </nav>
-        <h1>HackBlog</h1>
+        <h1>Chi Siamo</h1>
+
+        <div class="mt-5">
+            @if(! $team)
+                <h4>Nessun membro del team disponibile!</h4>
+            @else
+                @foreach($team as $team_member)
+                    <x-card 
+                    :title="$team_member['name']" 
+                    :route="''" 
+                    link-text="Più dettagli!"
+                    class= "border-dark" 
+                    />
+                @endforeach
+            @endif
+        </div>
     </div>
-</body>
-</html>
+</x-layouts.app>

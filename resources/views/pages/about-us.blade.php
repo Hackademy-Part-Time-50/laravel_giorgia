@@ -3,7 +3,7 @@
         <h1>Chi Siamo</h1>
 
         <div class="mt-5">
-            @if(! $team)
+            @if(!$team)
                 <h4>Nessun membro del team disponibile!</h4>
             @else
                 @foreach($team as $team_member)

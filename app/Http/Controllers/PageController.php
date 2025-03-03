@@ -8,12 +8,11 @@ class PageController extends Controller
 {
     private $articles;
 
-
     public function __construct()
     {
         $this->articles = [
             1 => ['id' => 1, 'title' => 'Articolo #1', 'category' => 'PHP', 'visible' => true],
-            2 => ['id' => 2, 'title' => 'Articolo #2', 'category' => 'JS', 'visible' => true],
+            2 => ['id' => 2, 'title' => 'Articolo #2', 'category' => 'JS', 'visible' => false],
             3 => ['id' => 3, 'title' => 'Articolo #3', 'category' => 'Java', 'visible' => true],
             4 => ['id' => 4, 'title' => 'Articolo #4', 'category' => 'CSS', 'visible' => true],
         ];
@@ -21,9 +20,7 @@ class PageController extends Controller
 
     public function welcome()
     {
-        return view('welcome', [
-            'title' => 'HackBlog',
-        ]);
+        return view('welcome');
     }
 
     public function articles()
@@ -35,29 +32,26 @@ class PageController extends Controller
 
     public function article($id)
     {
-        if ((! array_key_exists($id, $this->articles)) || (! $this->articles[$id]['visible'])) {
+        if((! array_key_exists($id, $this->articles)) || (! $this->articles[$id]['visible'])) {
             abort(404);
         }
-
+    
         return view('pages.article', [
             'title' => $this->articles[$id]['title'],
             'category' => $this->articles[$id]['category'],
         ]);
     }
 
-    
-     public function aboutUs()
+    public function aboutUs()
     {
         $team = [
-            ['id' => 1, 'name' => 'Alessandro'],
-            ['id' => 2, 'name' => 'Giuseppe'],
-            ['id' => 3, 'name' => 'Catalina'],
+            ['id' => 1, 'name' => 'Aldo'],
+            ['id' => 2, 'name' => 'Giovanni'],
+            ['id' => 3, 'name' => 'Giacomino'],
         ];
 
         return view('pages.about-us', [
             'team' => $team,
         ]);
     }
-
-    
 }
